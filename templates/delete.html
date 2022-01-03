@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>Delete Asset</h2>
+<div class="container-fluid">
+    <form action="{{ url_for('delete', asset_id=asset_id) }}" method="post">
+        <h3>Are you sure you want to delete asset {{ new_asset.assetTitle }}?</h3>
+        {{ form.submit(class="btn btn-danger") }}
+        <a href="{{ url_for('started') }}" class="btn btn-primary">Cancel</a>
+
+
+    </form>
+</div>
+</body>
+</html>

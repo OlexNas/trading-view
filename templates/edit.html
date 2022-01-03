@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>Edid Asset</h2>
+<div class="container-fluid">
+    <form action="{{ url_for('edit', asset_id=asset_id) }}" method="post">
+        <h3>{{ form.title.data }}</h3>
+        {{ form.amount.label }}<br>
+        {{ form.amount }}<br>
+        {{ form.tokenPrice.label }}<br>
+        {{ form.tokenPrice }}<br>
+        {{ form.pricePrediction.label }}<br>
+        {{ form.pricePrediction }}<br>
+        {{ form.submit }}
+
+    </form>
+</div>
+</body>
+</html>

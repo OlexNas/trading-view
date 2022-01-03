@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="refresh" content="5">
+
+    <title>Account</title>
+
+</head>
+
+<style>
+table, th, td {
+  border:1px solid green;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #aaaaaa;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  padding: 8px;
+}
+</style>
+
+<body>
+    <h1>Welcome</h1>
+    <h2>{{ bitcoin["symbol"] }}-{{ bitcoin["buy"] }}</h2>
+    <ul>
+            <li><a href='/'>My account</a></li>
+            <li style="float: right"><a href='addAsset'>Add Position>>>   </a></li>
+    </ul>
+    <h2>Main Account</h2>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-primary">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <br>
+    {% if my_assets %}
+    <h2> Assets </h2>
+
+    <table style="width: 75%">
+
+        <tr>
+            <th>Asset Title</th>
+            <th>Entry Price</th>
+            <th>Current Price</th>
+            <th>Gain/Loss</th>
+            <th>Prediction</th>
+            <th>Stake</th>
+            <th>Potential Earnings</th>
+            <th></th>
+
+        </tr>
+
+        {% for asset in my_assets %}
+        <tr>
+            <td>{{ asset.assetTitle }}<a href="{{ url_for('addstake', asset_id=asset.id) }}" style="float: right">Add Stake</a> </td>
+            <td>{{ asset.assetPrice }}</td>
+            <td>{{ asset.current_price }}</td>
+            <td bgcolor="{{ asset.cellColor }}">{{ asset.gain_loss }}%</td>
+            <td>{{ asset.pricePrediction }}</td>
+            <td>{{ asset.stake }}</td>
+            <td>{{ asset.potentialGain }}</td>
+            <td>
+                <a href="{{ url_for('edit', asset_id=asset.id) }}">Edit</a>
+                <a href="{{ url_for('delete', asset_id=asset.id) }}">Delete</a>
+            </td>
+
+
+
+        </tr>
+        {% endfor %}
+
+    </table>
+    {% endif %}
+</body>
+</html>

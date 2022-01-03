@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>www</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js">
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js">
+    </script>
+
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/ui-lightness/jquery-ui.css"
+        rel="stylesheet" type="text/css" />
+
+
+</head>
+    <title>Assets</title>
+
+<body>
+    <h1>Welcome</h1>
+    <ul>
+            <li><a href="/">Main page</a></li>
+            <li><a href='addAsset'>Assets page</a></li>
+    </ul>
+    <h2>Add Asset</h2>
+    <form action='addAsset' method="post">
+        {{ form.csrf_token }}
+        {{ form.title.label }}<br>
+        {{ form.title }}<br>
+        {{ form.amount.label }}<br>
+        {{ form.amount }}<br>
+        {{ form.tokenPrice.label }}<br>
+        {{ form.tokenPrice }}<br>
+        {{ form.pricePrediction.label }}<br>
+        {{ form.pricePrediction }}<br>
+        {{ form.submit }}
+
+    </form>
+
+        <script>
+        $( function() {
+            var availableTags = [
+                {% for name in asset_names %}
+                    "{{name}}",
+                {% endfor %}
+            ];
+            $( "#tags" ).autocomplete({
+                source: availableTags
+    });
+  } );
+  </script>
+
+</body>
+
+
+</html>

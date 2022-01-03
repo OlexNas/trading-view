@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Stake</title>
+</head>
+<body>
+<h2>Add Stake</h2>
+<div class="container-fluid">
+    <form action="{{ url_for('addstake', asset_id=asset_id) }}" method="post">
+        <h3>{{ form.title.data }}</h3>
+        {{ form.amount.label }}<br>
+        {{ form.amount }}<br>
+        {{ form.tokenPrice.label }}<br>
+        {{ form.tokenPrice }}<br>
+        {{ form.submit }}
+
+    </form>
+</div>
+</body>
+</html>
