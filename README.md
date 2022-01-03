@@ -1,2 +1,2 @@
 # trading-view
-Application to track trading positions
+Application to track crypto trading positions
